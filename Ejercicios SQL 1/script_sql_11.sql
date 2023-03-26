@@ -1,5 +1,6 @@
-select o.order_id ,p.product_name ,od.discount from orders o 
-inner join order_details od 
-on o.order_id =od.order_id 
-inner join products p 
-on p.product_id =od.product_id 
+-- 11. Calcular la suma total de gastos de envío por país de destino
+
+select o.ship_country, o.order_id, o.shipped_date, o.freight,
+	sum(o.freight) over (partition by o.ship_country) as totalshipingcosts
+from orders o 
+order by o.ship_country ,o.order_id 

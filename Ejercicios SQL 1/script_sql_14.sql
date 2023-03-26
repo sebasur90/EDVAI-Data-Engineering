@@ -1,3 +1,4 @@
-select o.order_id ,c.company_name from orders o 
-left join customers c 
-on o.customer_id = c.customer_id 
+-- 14.Ranking de productos por precio unitario
+
+select product_id, product_name, unit_price, rank() over (order by unit_price desc) 
+from products p 

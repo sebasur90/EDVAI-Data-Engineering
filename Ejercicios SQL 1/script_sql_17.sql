@@ -1,3 +1,11 @@
-select e.first_name ,e.last_name ,et.territory_id  from employees e 
-full outer join employee_territories et 
-on e.employee_id = et.employee_id 
+
+/*
+17.Obtener un listado de productos que contengan: id de producto, nombre del producto,
+precio unitario, precio del producto anterior, diferencia entre el precio del producto y
+precio del producto anterior.
+*/
+
+select p.product_id , p.product_name , p.unit_price,
+	lag(unit_price) over (order by product_id) as lastunitprice,
+	p.unit_price - lag(unit_price) over (order by product_id) as pricedifference
+from products p 

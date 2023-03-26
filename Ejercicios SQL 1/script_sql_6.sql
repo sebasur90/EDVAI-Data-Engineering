@@ -1,2 +1,10 @@
-INSERT INTO customers (customer_id, company_name ,contact_name , contact_title,address,city,region,postal_code,country,phone,fax)
-VALUES ('SEBA','Credicoop','sebastian','ingeniero de datos','reconquista 484','BsAs','sur',1834,'Argentina',11111111,22222222);
+/*
+Row_number
+6. Obtener el ranking de los productos más vendidos
+*/
+select  row_number() over (order by SUM(od.quantity) desc) as ranking,
+		p.product_name, SUM(od.quantity) as "totalquantity" 
+from products p
+inner join order_details od on p.product_id = od.product_id 
+group by p.product_name 
+order by totalquantity desc

@@ -1,5 +1,7 @@
-select e.employee_id ,e.last_name ,et.territory_id ,t.territory_description  from employees e 
-left join employee_territories et 
-on e.employee_id =et.employee_id 
-left join territories t 
-on et.territory_id =t.territory_id 
+/*
+13.Ranking de empleados por fecha de contratacion
+*/
+
+select e.employee_id , e.first_name , e.last_name , e.hire_date,
+	rank() over (order by e.hire_date) as rnk
+from employees e 
