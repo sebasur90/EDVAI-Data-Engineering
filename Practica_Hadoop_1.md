@@ -13,7 +13,8 @@ script que borre el archivo starwars.csv del directorio temporal
 
 ```touch landing.sh```
 
-```#!/bin/bash
+```
+#!/bin/bash
 wget -P /home/hadoop/landing https://github.com/fpineyro/homework-0/blob/master>
 hdfs dfs -put /home/hadoop/landing/starwars.csv /ingest
 rm /home/hadoop/landing/starwars.cs```
